@@ -1,6 +1,6 @@
 class Node:
     # 提高访问属性的速度，并节省内存
-    __slots__ = 'prev', 'next', 'key', 'value'
+    # __slots__ = 'prev', 'next', 'key', 'value'
 
     def __init__(self, key=0, value=0):
         self.key = key
