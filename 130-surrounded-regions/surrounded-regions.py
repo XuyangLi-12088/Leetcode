@@ -51,13 +51,13 @@ class Solution:
 
         def bfs(i, j):
             queue = deque()
-            queue.appendleft((i, j))
+            queue.append((i, j))
             while queue:
                 i, j = queue.pop()
                 if 0 <= i < row and 0 <= j < col and board[i][j] == "O":
                     board[i][j] = "B"
                     for x, y in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                        queue.appendleft((i + x, j + y))
+                        queue.append((i + x, j + y))
 
         for j in range(col):
             if board[0][j] == "O":
