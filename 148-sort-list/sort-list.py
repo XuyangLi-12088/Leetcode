@@ -22,7 +22,8 @@ class Solution:
         return self.merge(self.mergeSort(left_head), self.mergeSort(right_head))
 
     def merge(self, left, right):
-        cur = dummy = ListNode()
+        dummy = ListNode()
+        cur = dummy
         while left and right:
             if left.val <= right.val:
                 cur.next = left
