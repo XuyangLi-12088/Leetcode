@@ -13,9 +13,8 @@ class Solution:
                     break
                 s_set.remove(stack[-1])
                 stack.pop()
-            if c not in s_set:
-                stack.append(c)
-                s_set.add(c)
+            stack.append(c)
+            s_set.add(c)
 
         return "".join(stack)
             
