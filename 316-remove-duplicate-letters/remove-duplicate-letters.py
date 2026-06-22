@@ -3,7 +3,6 @@ class Solution:
         stack = []
         s_set = set()
         count = Counter(s)
-        print(count)
         for c in s:
             count[c] -= 1
             if c in s_set:
