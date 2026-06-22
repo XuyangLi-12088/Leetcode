@@ -1,6 +1,6 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        # Monotonic Stack：
+        # Monotonic Stack：单调递增栈
         output = []
         stack = []
         hash_map = {}
@@ -18,13 +18,6 @@ class Solution:
                 output.append(-1)
 
         return output
-
-
-            
-
-            
-
-
 
         # # Two stack solution
         # output = []
