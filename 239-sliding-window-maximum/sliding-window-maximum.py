@@ -49,7 +49,9 @@ class Solution:
         kept_nums = deque()
 
         for i in range(len(nums)):
-            self.update_kept_nums(kept_nums, nums[i])
+            while kept_nums and nums[i] > kept_nums[-1]:
+                kept_nums.pop()
+            kept_nums.append(nums[i])
 
             if i >= k and nums[i - k] == kept_nums[0]:
                 kept_nums.popleft()
@@ -58,9 +60,3 @@ class Solution:
                 max_list.append(kept_nums[0])
 
         return max_list
-
-    def update_kept_nums(self, kept_nums, num):
-        while kept_nums and num > kept_nums[-1]:
-            kept_nums.pop()
-
-        kept_nums.append(num)
