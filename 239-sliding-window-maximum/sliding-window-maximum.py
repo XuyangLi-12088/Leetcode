@@ -1,16 +1,16 @@
-# 优先队列解法:
-class Solution:
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        size = len(nums)
-        q = [(-nums[i], i) for i in range(k)]
-        heapq.heapify(q)
-        res = [-q[0][0]]
-        for i in range(k, size):
-            heapq.heappush(q, (-nums[i], i))
-            while q[0][1] <= i - k:
-                heapq.heappop(q)
-            res.append(-q[0][0])
-        return res
+# # 优先队列解法:
+# class Solution:
+#     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+#         size = len(nums)
+#         q = [(-nums[i], i) for i in range(k)]
+#         heapq.heapify(q)
+#         res = [-q[0][0]]
+#         for i in range(k, size):
+#             heapq.heappush(q, (-nums[i], i))
+#             while q[0][1] <= i - k:
+#                 heapq.heappop(q)
+#             res.append(-q[0][0])
+#         return res
 
 # Solution 1:
 # class MyQueue:
@@ -43,24 +43,24 @@ class Solution:
 #         return result
 
 # Solution 2:
-# class Solution:
-#     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-#         max_list = []
-#         kept_nums = deque()
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        max_list = []
+        kept_nums = deque()
 
-#         for i in range(len(nums)):
-#             self.update_kept_nums(kept_nums, nums[i])
+        for i in range(len(nums)):
+            self.update_kept_nums(kept_nums, nums[i])
 
-#             if i >= k and nums[i - k] == kept_nums[0]:
-#                 kept_nums.popleft()
+            if i >= k and nums[i - k] == kept_nums[0]:
+                kept_nums.popleft()
 
-#             if i >= k - 1:
-#                 max_list.append(kept_nums[0])
+            if i >= k - 1:
+                max_list.append(kept_nums[0])
 
-#         return max_list
+        return max_list
 
-#     def update_kept_nums(self, kept_nums, num):
-#         while kept_nums and num > kept_nums[-1]:
-#             kept_nums.pop()
+    def update_kept_nums(self, kept_nums, num):
+        while kept_nums and num > kept_nums[-1]:
+            kept_nums.pop()
 
-#         kept_nums.append(num)
+        kept_nums.append(num)
