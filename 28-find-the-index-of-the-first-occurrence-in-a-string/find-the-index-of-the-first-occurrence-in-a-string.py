@@ -14,13 +14,12 @@ class Solution:
                 left += 1
             next[right] = left  # 记录前缀长度，更新next[right], 结束本次循环，right += 1
 
-        j = 0
-        for i in range(n):
-            while j > 0 and haystack[i] != needle[j]:
+        j = 0   # j为模式串中当前匹配的位置
+        for i in range(n):  # i为文本串中当前匹配的位置
+            while j > 0 and haystack[i] != needle[j]:   # 如果模式串前缀匹配不成功，将模式串进行回退，j == 0 时停止回退
                 j = next[j - 1]
-            if haystack[i] == needle[j]:
+            if haystack[i] == needle[j]:    # 当前模式串前缀匹配成功，令j += 1，继续匹配
                 j += 1
-            if j == m:
+            if j == m:  # 当前模式串完全匹配成功，返回匹配开始位置
                 return i - j + 1
-
-        return -1
+        return -1   # 匹配失败，返回 -1
