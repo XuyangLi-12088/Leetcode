@@ -23,7 +23,7 @@ class WordDictionary:
         while queue:
             i, node = queue.popleft()
             if i == len(word):
-                if node.is_end_of_word:
+                if node.is_end_of_word == True:
                     return True
                 continue
             if word[i] == ".":
