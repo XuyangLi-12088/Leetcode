@@ -18,6 +18,23 @@ class WordDictionary:
         return   
 
     def search(self, word: str) -> bool:
+        def dfs(node, index):
+            if index == len(word):
+                return node.is_end_of_word
+
+            if word[index] == ".":
+                for child in node.children.values():
+                    if dfs(child, index+1):
+                        return True
+
+            if word[index] in node.children:
+                return dfs(node.children[word[index]], index+1)
+
+            return False
+
+        return dfs(self.root, 0)
+
+    def search(self, word: str) -> bool:
         # BFS
         queue = deque([(0, self.root)])
         while queue:
@@ -34,24 +51,6 @@ class WordDictionary:
                     queue.append((i + 1, node.children[word[i]]))
 
         return False 
-
-
-    # def search(self, word: str) -> bool:
-    #     def dfs(node, index):
-    #         if index == len(word):
-    #             return node.is_end_of_word
-
-    #         if word[index] == ".":
-    #             for child in node.children.values():
-    #                 if dfs(child, index+1):
-    #                     return True
-
-    #         if word[index] in node.children:
-    #             return dfs(node.children[word[index]], index+1)
-
-    #         return False
-
-    #     return dfs(self.root, 0)
 
 
     
