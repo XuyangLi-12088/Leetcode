@@ -34,23 +34,23 @@ class WordDictionary:
 
         return dfs(self.root, 0)
 
-    def search(self, word: str) -> bool:
-        # BFS
-        queue = deque([(0, self.root)])
-        while queue:
-            i, node = queue.popleft()
-            if i == len(word):
-                if node.is_end_of_word == True:
-                    return True
-                continue
-            if word[i] == ".":
-                for child in node.children:
-                    queue.append((i + 1, node.children[child]))
-            else:
-                if word[i] in node.children:
-                    queue.append((i + 1, node.children[word[i]]))
+    # def search(self, word: str) -> bool:
+    #     # BFS
+    #     queue = deque([(0, self.root)])
+    #     while queue:
+    #         i, node = queue.popleft()
+    #         if i == len(word):
+    #             if node.is_end_of_word == True:
+    #                 return True
+    #             continue
+    #         if word[i] == ".":
+    #             for child in node.children:
+    #                 queue.append((i + 1, node.children[child]))
+    #         else:
+    #             if word[i] in node.children:
+    #                 queue.append((i + 1, node.children[word[i]]))
 
-        return False 
+    #     return False 
 
 
     
