@@ -25,9 +25,9 @@ class Solution:
         res = set()
         num_city = len(isConnected)
         union_find = UnionFind(num_city)
-        for i, l in enumerate(isConnected):
-            for j, c in enumerate(l):
-                if c == 1:
+        for i in range(num_city):
+            for j in range(i+1, num_city):
+                if isConnected[i][j] == 1:
                     union_find.union(i, j)
         
         for city in range(num_city):
