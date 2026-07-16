@@ -37,7 +37,8 @@ class Solution:
     # 把数字n转换成（行，列）
     def location_convert(self, board_n, board_len) -> tuple:
         idx = board_n - 1  # 转成从0开始
-        row_from_bottom, col_in_row = divmod(idx, board_len)
+        row_from_bottom = idx // board_len
+        col_in_row = idx % board_len
         row = board_len - 1 - row_from_bottom
         if row_from_bottom % 2 == 0:
             col = col_in_row
