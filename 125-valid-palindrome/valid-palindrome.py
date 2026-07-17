@@ -13,7 +13,6 @@ class Solution:
         #     return False
 
         # 相向双指针
-        # s_list = list(s)
         left = 0
         right = len(s) - 1
         while left < right:
