@@ -18,7 +18,18 @@ class Solution:
         
         # return k
 
-        nums.sort()
-        n = len(nums)
-        return nums[n//2]
+        # nums.sort()
+        # n = len(nums)
+        # return nums[n//2]
+
+        ans = hp = 0
+        for x in nums:
+            if hp == 0:
+                ans , hp = x, 1
+            else:
+                if ans == x:
+                    hp += 1
+                else:
+                    hp -= 1
+        return ans
         
