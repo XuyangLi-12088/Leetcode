@@ -6,12 +6,19 @@ class Solution:
         output = []
         heap = []
         for i in range(len(points)):
-            heap.append((self.euc_distance([points[i][0], 0], [points[i][1], 0]), i))
+            cur_distance = -self.euc_distance([points[i][0], 0], [points[i][1], 0])
+            # heap未满，直接加进heap
+            if len(heap) < k:
+                heapq.heappush(heap, (cur_distance, i))
+            # heap满了
+            else:
+                max_distance = heap[0][0]
+                if cur_distance > max_distance:
+                    heapq.heappop(heap)
+                    heapq.heappush(heap, (cur_distance, i))
 
-        heapq.heapify(heap)
-
-        for _ in range(k):
-            output.append(points[heapq.heappop(heap)[1]])
+        for p in heap:
+            output.append(points[p[1]])
 
         return output
 
