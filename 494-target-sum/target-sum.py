@@ -13,10 +13,8 @@ class Solution:
             if (i, cur_sum) in table:
                 return table[(i, cur_sum)]
 
-            
-
-            ans = dfs(i + 1, cur_sum - nums[i]) + dfs(i + 1, cur_sum + nums[i])
-            table[(i, cur_sum)] = ans
-            return ans
+            cnt = dfs(i + 1, cur_sum - nums[i]) + dfs(i + 1, cur_sum + nums[i])
+            table[(i, cur_sum)] = cnt
+            return cnt
 
         return dfs(0, 0)
