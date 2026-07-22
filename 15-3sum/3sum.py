@@ -46,6 +46,9 @@ class Solution:
         output = []
         nums.sort()
         for i in range(len(nums)):
+            if nums[i] > 0:
+                break
+
             # 检查 nums[i] 和 nums[i-1] 是不是一样
             # 如果一样直接跳过
             if i > 0 and nums[i] == nums[i - 1]:
