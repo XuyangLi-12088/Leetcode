@@ -9,24 +9,27 @@ class Solution:
             graph[pre[1]].append(pre[0])
 
         # start Topological sorting
-        indegrees = {v: 0 for v in graph}
-        for v in graph:
-            for n in graph[v]:
-                indegrees[n] += 1
+        indegrees = {u: 0 for u in graph}
+        for u in graph:
+            for v in graph[u]:
+                indegrees[v] += 1
 
+        queue = collections.deque()
+        for u in indegrees:
+            if indegrees[u] == 0:
+                queue.append(u)
         order = []
-        S = collections.deque([v for v in indegrees if indegrees[v] == 0])
 
-        while S:
-            v = S.popleft()
-            order.append(v)
-            for n in graph[v]:
-                indegrees[n] -= 1
-                if indegrees[n] == 0:
-                    S.append(n)
-
-        if len(order) != len(graph):
+        while queue:
+            pop = queue.popleft()
+            order.append(pop)
+            for v in graph[pop]:
+                indegrees[v] -= 1
+                if indegrees[v] == 0:
+                    queue.append(v)
+            
+        if len(order) != len(indegrees):
             return False
-
+        
         return True
         
