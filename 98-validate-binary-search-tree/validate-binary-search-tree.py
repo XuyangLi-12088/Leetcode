@@ -5,30 +5,28 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    # def isValidBST(self, root: Optional[TreeNode]) -> bool:
-    #     if root is None:
-    #         return False
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return False
 
-    #     def helper(root, min_val, max_val):
-    #         if (root.val > min_val and root.val < max_val):
-    #             if root.left and root.right:
-    #                 return helper(root.left, min_val, root.val) and helper(root.right, root.val, max_val)
-    #             elif root.left:
-    #                 return helper(root.left, min_val, root.val)
-    #             elif root.right:
-    #                 return helper(root.right, root.val, max_val)
-    #             else:
-    #                 return True
-    #         else:
-    #             return False
-            
-    #     return helper(root, float('-inf'), float('inf'))
+        def checkBST(root, min_val, max_val):
+            if not root:
+                return True
 
-    def isValidBST(self, root: Optional[TreeNode], left = -inf, right = inf) -> bool:
-        if root == None:
-            return True
-        x = root.val
-        return left < x < right and self.isValidBST(root.left, left, x) and self.isValidBST(root.right, x, right)
+            if min_val < root.val < max_val:
+                l = checkBST(root.left, min_val, root.val)
+                r = checkBST(root.right, root.val, max_val)
+                return l & r
+            else:
+                return False
+
+        return checkBST(root, -inf, inf)
+
+    # def isValidBST(self, root: Optional[TreeNode], left = -inf, right = inf) -> bool:
+    #     if root == None:
+    #         return True
+    #     x = root.val
+    #     return left < x < right and self.isValidBST(root.left, left, x) and self.isValidBST(root.right, x, right)
 
 
 
