@@ -1,5 +1,6 @@
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
+        # 子集型回溯：
         ans = []
         path = []
         n = len(s)
@@ -9,7 +10,7 @@ class Solution:
                 return
             
             for j in range(i, n):
-                t = s[i : j+1]
+                t = s[i:j+1]
                 if t == t[::-1]:
                     path.append(t)
                     dfs(j + 1)
