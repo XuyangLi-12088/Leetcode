@@ -27,10 +27,7 @@ class Solution:
             return root
         if left:
             return left
-        if right:
-            return right
-        if not left and not right:
-            return None
+        return right
         
 
 
