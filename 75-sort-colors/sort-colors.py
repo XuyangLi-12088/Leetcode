@@ -3,6 +3,20 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        red = white = blue = 0
+        for x in nums:
+            if x == 0:
+                red += 1
+            if x == 1:
+                white += 1
+            if x == 2:
+                blue += 1
+        nums[:red] = [0] * red
+        nums[red:red+white] = [1] * white
+        nums[red+white:] = [2] * blue
+
+
+
         # p0 = p1 = 0
         # for i, x in enumerate(nums):
         #     nums[i] = 2
@@ -13,15 +27,15 @@ class Solution:
         #         nums[p0] = 0
         #         p0 += 1
 
-        nums0 = nums1 = nums2 = 0
-        for x in nums:
-            if x == 0:
-                nums0 += 1
-            elif x == 1:
-                nums1 += 1
-            elif x == 2:
-                nums2 += 1
+        # nums0 = nums1 = nums2 = 0
+        # for x in nums:
+        #     if x == 0:
+        #         nums0 += 1
+        #     elif x == 1:
+        #         nums1 += 1
+        #     elif x == 2:
+        #         nums2 += 1
 
-        nums[:nums0] = [0] * nums0
-        nums[nums0:nums0+nums1] = [1] * nums1
-        nums[nums0+nums1:] = [2] * nums2         
+        # nums[:nums0] = [0] * nums0
+        # nums[nums0:nums0+nums1] = [1] * nums1
+        # nums[nums0+nums1:] = [2] * nums2         
