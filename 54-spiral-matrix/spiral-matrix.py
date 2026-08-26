@@ -7,19 +7,16 @@ class Solution:
             # 右
             if d == 0:
                 pop = matrix.pop(0)
-                res += pop
             # 下
             elif d == 1:
                 pop = [row.pop() for row in matrix]
-                res += pop
             # 左
             elif d == 2:
-                pop = matrix.pop()
-                res += pop[::-1]
+                pop = matrix.pop()[::-1]
             # 上
             elif d == 3:
                 pop = [row.pop(0) for row in matrix[::-1]]
-                res += pop
+            res += pop
             d = (d + 1) % 4
 
         return res
