@@ -1,6 +1,5 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        direction = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         d = 0
         res = []
         while len(matrix) != 0 and len(matrix[0]) != 0:
