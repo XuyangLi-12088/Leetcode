@@ -10,18 +10,16 @@ class Solution:
                 res += pop
             # 下
             elif d == 1:
-                for row in matrix:
-                    pop = row.pop()
-                    res.append(pop)
+                pop = [row.pop() for row in matrix]
+                res += pop
             # 左
             elif d == 2:
                 pop = matrix.pop()
                 res += pop[::-1]
             # 上
             elif d == 3:
-                for row in matrix[::-1]:
-                    pop = row.pop(0)
-                    res.append(pop)
+                pop = [row.pop(0) for row in matrix[::-1]]
+                res += pop
             d = (d + 1) % 4
 
         return res
