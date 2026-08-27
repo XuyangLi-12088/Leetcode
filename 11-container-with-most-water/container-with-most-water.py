@@ -7,10 +7,10 @@ class Solution:
             min_n, min_i = 0, 0
             cur_i, cur_j = i, j
             if height[cur_i] <= height[cur_j]:
-                min_n, min_i = height[cur_i], cur_i
+                min_n = height[cur_i]
                 i += 1
             else:
-                min_n, min_i = height[cur_j], cur_j
+                min_n = height[cur_j]
                 j -= 1
             res = max(res, abs(cur_j-cur_i) * min_n)
 
