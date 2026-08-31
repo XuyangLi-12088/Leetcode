@@ -3,24 +3,22 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        # red = white = blue = 0
-        # for x in nums:
-        #     if x == 0:
-        #         red += 1
-        #     if x == 1:
-        #         white += 1
-        #     if x == 2:
-        #         blue += 1
-        # nums[:red] = [0] * red
-        # nums[red:red+white] = [1] * white
-        # nums[red+white:] = [2] * blue
+        nums_0 = 0
+        nums_1 = 0
+        nums_2 = 0
+        for n in nums:
+            if n == 0:
+                nums_0 += 1
+            elif n == 1:
+                nums_1 += 1
+            elif n == 2:
+                nums_2 += 1
+        for i in range(len(nums)):
+            if i < nums_0:
+                nums[i] = 0
+            elif nums_0 <= i < nums_0 + nums_1:
+                nums[i] = 1
+            else:
+                nums[i] = 2
 
-        p0 = p1 = 0
-        for i, x in enumerate(nums):
-            nums[i] = 2 
-            if x <= 1:
-                nums[p1] = 1
-                p1 += 1
-            if x == 0:
-                nums[p0] = 0
-                p0 += 1
+        return nums
