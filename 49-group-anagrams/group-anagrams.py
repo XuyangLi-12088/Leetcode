@@ -1,17 +1,15 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         hash_map = {}
-        output = []
         for s in strs:
-            sort_s = ''.join(sorted(s))
-            if sort_s in hash_map:
-                hash_map[sort_s].append(s)
+            count = [0] * 26
+            for c in s:
+                count[ord(c) - ord("a")] += 1
+            if tuple(count) in hash_map:
+                hash_map[tuple(count)].append(s)
             else:
-                hash_map[sort_s] = [s]
+                hash_map[tuple(count)] = [s]
 
-        for k in hash_map:
-            output.append(hash_map[k])
-
-        return output 
+        return list(hash_map.values())
 
         
