@@ -1,8 +1,7 @@
 class MinStack:
 
     # 5 4 3 6 1
-    # min_stack = [(5, 5), (4, 5), (3, 4), (6, 3), (1, 3)]
-
+    # min_stack = [(5, 5), (4, 4), (3, 3), (6, 3), (1, 1)]
 
     def __init__(self):
         self.min_stack = []
@@ -11,7 +10,7 @@ class MinStack:
         if len(self.min_stack) == 0:
             self.min_stack.append((value, value))
         else:
-            self.min_stack.append((value, min(self.min_stack[-1][0], self.min_stack[-1][1])))
+            self.min_stack.append((value, min(self.min_stack[-1][1], value)))
         return
         
     def pop(self) -> None:
@@ -22,8 +21,6 @@ class MinStack:
         return self.min_stack[-1][0]
 
     def getMin(self) -> int:
-        if self.min_stack[-1][0] < self.min_stack[-1][1]:
-            return self.min_stack[-1][0]
         return self.min_stack[-1][1]
 
         
