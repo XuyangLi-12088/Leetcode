@@ -11,9 +11,19 @@ class Leaderboard:
         return
 
     def top(self, K: int) -> int:
-        score_list = list(self.hash_map.values())
-        score_list.sort(reverse=True)
-        return sum(score_list[0:K])
+        max_heap = []
+        for v in self.hash_map.values():
+            max_heap.append(v * -1)
+        heapq.heapify(max_heap)
+        s = 0
+        for _ in range(K):
+            s += (heapq.heappop(max_heap) * -1)
+        return s
+
+
+
+
+
 
     def reset(self, playerId: int) -> None:
         self.hash_map[playerId] = 0
