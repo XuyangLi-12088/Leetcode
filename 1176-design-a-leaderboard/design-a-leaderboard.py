@@ -1,5 +1,4 @@
 class Leaderboard:
-    # (score, player_id)
     def __init__(self):
         self.hash_map = {} # key: player_id, value: score 
 
@@ -19,11 +18,6 @@ class Leaderboard:
         for _ in range(K):
             s += (heapq.heappop(max_heap) * -1)
         return s
-
-
-
-
-
 
     def reset(self, playerId: int) -> None:
         self.hash_map[playerId] = 0
