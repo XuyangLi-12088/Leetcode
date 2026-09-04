@@ -7,9 +7,9 @@ class Solution:
             if buy_price > p:
                 buy_price = p
                 continue
-
-            if (p - buy_price) > profit:
-                profit = p - buy_price
+            else:
+                if (p - buy_price) > profit:
+                    profit = p - buy_price
 
         return profit
 
