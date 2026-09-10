@@ -16,5 +16,4 @@ class Solution:
             return
 
         dfs(root)
-        print(output)
         return output[k-1]
