@@ -13,12 +13,14 @@ class Solution:
             if cooldown and cooldown[0][2] == time:
                 r, k, _ = cooldown.popleft()
                 heapq.heappush(max_heap, (r, k))
+            if cooldown and not max_heap:
+                output.append("_")
 
             if max_heap:
                 c, k = heapq.heappop(max_heap)
                 remaining = c + 1
+                output.append(k)
                 if remaining != 0:
-                    output.append(k)
                     cooldown.append((remaining, k, time + n + 1))
-            
+
         return time
