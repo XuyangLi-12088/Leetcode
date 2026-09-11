@@ -26,6 +26,7 @@ class Solution:
                         if diff[s[left]] == 0:
                             ge_cnt -= 1
                         diff[s[left]] -= 1
+                        
                     left += 1
 
         return "" if ans_left == -1 else s[ans_left : ans_right + 1]
