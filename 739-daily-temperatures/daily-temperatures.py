@@ -6,11 +6,11 @@ class Solution:
         n = len(temperatures)
         for i in range(n-1, -1, -1):
             cur_t = temperatures[i]
-            while len(mono_stack) and mono_stack[-1][0] <= cur_t:
+            while len(mono_stack) and temperatures[mono_stack[-1]] <= cur_t:
                 mono_stack.pop()
             if len(mono_stack):
-                output[i] = mono_stack[-1][1] - i
+                output[i] = mono_stack[-1] - i
 
             # 加入单调栈
-            mono_stack.append((cur_t, i))
+            mono_stack.append(i)
         return output
