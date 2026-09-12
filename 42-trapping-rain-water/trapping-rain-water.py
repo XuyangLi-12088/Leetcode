@@ -1,37 +1,51 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        left = 0
-        left_h = 0 # 储存left指针左面的历史最大高度
-        right = len(height) - 1
-        right_h = 0 # 储存right指针右面的历史最大高度
-        ans = 0
-        while left < right:
-            # height[left]和height[right]哪边小收缩哪个指针
-            if height[left] <= height[right]:
-                # 如果当前高度大于历史最大高度，更新历史最大高度
-                if height[left] > left_h:
-                    left_h = height[left]
-                # 如果当前高度小于历史最大高度，更新答案
-                else:
-                    ans += left_h - height[left]
-                left += 1
-            else:
-                # 如果当前高度大于历史最大高度，更新历史最大高度
-                if height[right] > right_h:
-                    right_h = height[right]
-                # 如果当前高度小于历史最大高度，更新答案
-                else:
-                    ans += right_h - height[right]
-                right -= 1
+        # left = 0
+        # left_h = 0 # 储存left指针左面的历史最大高度
+        # right = len(height) - 1
+        # right_h = 0 # 储存right指针右面的历史最大高度
+        # ans = 0
+        # while left < right:
+        #     # height[left]和height[right]哪边小收缩哪个指针
+        #     if height[left] <= height[right]:
+        #         # 如果当前高度大于历史最大高度，更新历史最大高度
+        #         if height[left] > left_h:
+        #             left_h = height[left]
+        #         # 如果当前高度小于历史最大高度，更新答案
+        #         else:
+        #             ans += left_h - height[left]
+        #         left += 1
+        #     else:
+        #         # 如果当前高度大于历史最大高度，更新历史最大高度
+        #         if height[right] > right_h:
+        #             right_h = height[right]
+        #         # 如果当前高度小于历史最大高度，更新答案
+        #         else:
+        #             ans += right_h - height[right]
+        #         right -= 1
 
-        return ans
-
-
+        # return ans
         # [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
         # left: 7
         # right: 7
         # left_h: 2
         # right_h: 2
         # ans: 1 + 1 + 2 + 1 + 1
+
+
+        # 单调栈
+        ans = 0
+        mono_stack = []
+        for i, h in enumerate(height):
+            while mono_stack and h >= height[mono_stack[-1]]:
+                bottom_h = height[mono_stack.pop()]
+                if not mono_stack:
+                    break
+                left = mono_stack[-1]
+                dh = min(height[left], h) - bottom_h
+                ans += dh * (i - left - 1)
+            mono_stack.append(i)
+
+        return ans
 
 
