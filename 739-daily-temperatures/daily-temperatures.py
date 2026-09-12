@@ -3,13 +3,14 @@ class Solution:
         # 单调栈
         output = [0] * len(temperatures)
         mono_stack = []
-        for i in range(len(temperatures)-1, -1, -1):
+        n = len(temperatures)
+        for i in range(n-1, -1, -1):
+            cur_t = temperatures[i]
+            while len(mono_stack) != 0 and mono_stack[-1][0] <= cur_t:
+                mono_stack.pop()
             if len(mono_stack) != 0:
-                while len(mono_stack) != 0 and mono_stack[-1][0] <= temperatures[i]:
-                    mono_stack.pop()
-                if len(mono_stack) != 0:
-                    output[i] = mono_stack[-1][1] - i
+                output[i] = mono_stack[-1][1] - i
 
             # 加入单调栈
-            mono_stack.append((temperatures[i], i))
+            mono_stack.append((cur_t, i))
         return output
