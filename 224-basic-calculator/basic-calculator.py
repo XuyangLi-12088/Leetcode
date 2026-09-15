@@ -23,4 +23,6 @@ class Solution:
                 res *= stack.pop()
                 res += stack.pop()
         res += sign * num
+
         return res
+
